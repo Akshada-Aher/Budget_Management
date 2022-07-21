@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.field{
+    margin-left:20px;
+    width:400px
+    ;
+    border-radius: 15px;
+    padding:20px;
+     
+}      
+#fieldset3{
+    
+    margin-left:300px;
+    width:500px;
+    border-radius: 12px;
+    padding: 20px;
+}
+.fieldset12{
+      display:flex;
+     margin-left:600px;
+     width:400px;
+     border-radius: 12px;
+     padding:30px;
+
+     }
+#e1{
+    margin: 20px;
+}
+#EmployeeDetails{
+     
+}
+body{
+    background-color:black;
+    opacity: 0.5;
+}
+    </style>
+</head>
+<body >
+    <fieldset class="field"  style="background-color:darkorange">
+        <legend style="color:white;font-size: 20px;;"> Enter Your Budget</legend>
+        <lable style="color:brown;font-size: 20px;">Enter Budget:</lable><input type="text" style="padding:3px;border-radius: 5px;font-size:20px;" id="t1">
+        <br><br>
+        <input type="button" value="budget" style="font-size:20px;align-item:center;" onclick="budget()" >
+    </fieldset>
+<br><br>
+    <fieldset id="fieldset3" style="padding:20px;top:230px;background-color: darkorange;" >
+        <legend style="color:white;font-size: 20px;">Search Results</legend>
+            <table id="EmployeeDetails" border="1" cellpadding="3%">
+            <tr>
+                <th colspan="4" style="color:brown;font-size: 20px;">Budget table:<lable></lable></th>
+                
+            </tr>
+            <tr>
+                <td style="color:brown;font-size: 18px;padding:5px;">Budget Amt</td>
+                <td style="color:brown;font-size: 18px;padding:5px;">Expenses Name</td>
+                <td style="color:brown;font-size: 18px;padding:5px;">Expenses Amt</td>
+                <td style="color:brown;font-size: 18px;padding:5px;">Remaining Amt</td>
+            </tr>
+        </table>
+        </fieldset>
+<br><br>
+        <fieldset class="fieldset12"  style="background-color:darkorange" >
+            <fieldset style="width:200px;background-color:darkorange">
+                <legend style="color:brown;font-size: 20px;">Expenses</legend>
+             <lable style="color:brown;font-size: 20px;"> Expenses Name:</lable><br><input type="text" id="t11" style="color:brown;font-size: 20px;"><br>
+               <lable style="color:brown;font-size: 20px;"> Expenses Amt:</lable><br><input type="text" id="t12" style="color:brown;font-size: 20px;border-color: purple;"><br>
+<input type="button" value="Expenses" onclick="ep()" style="color:brown;border-radius: 10px;padding:5px;background-color:cornflowerblue;font-size: 15px;margin-top: 20px;border-color: blueviolet;">
+            </fieldset>
+            <fieldset id="e1"  style="background-color:darkorange">
+                  <legend style="color:brown;font-size: 20px;">Expenses Info</legend>
+
+            </fieldset>
+        </fieldset>
+     <script>
+         var val;
+         var f=1;
+         function budget()
+         {
+         var t1=document.getElementById("EmployeeDetails").rows[0].cells[0];
+         t1.textContent+=":"+value("t1");
+         
+         }
+         function value(pos)
+         {
+             var v=document.getElementById(pos);
+               return v.value;
+         }
+         function create(c)
+         {
+             var v1=document.createElement(c);
+             return v1;
+         }
+function ep()
+ {
+        var table=document.getElementById("EmployeeDetails");
+        var tr=create("tr");
+        var td=create("td");
+         td.textContent=value("t1");
+         tr.appendChild(td);
+         var td=create("td");
+        td.textContent=value("t11");
+        tr.appendChild(td);
+        var td=create("td");
+        td.textContent=value("t12")
+        tr.appendChild(td);
+
+      var td=create("td");
+    if(f==1)
+       {
+        td.textContent=value("t1")-value("t12");
+        f++;
+        tr.appendChild(td);
+        val=td.textContent;
+       }
+       else{
+           if(val<0)
+           {
+               alert("your budget exceed now");
+           }
+           else
+           {
+           td.textContent=val-value("t12");
+           val=td.textContent;
+            tr.appendChild(td);
+           }
+        }
+          if(val<0){
+              
+          }
+          else{
+                table.appendChild(tr);
+              }
+        
+//expense
+if(val>0)
+{
+var expense=document.getElementById("e1");
+var ul=create("ul");
+var li=create("li");
+li.textContent=value("t11")+":"+value("t12");
+ul.appendChild(li);
+expense.appendChild(ul);
+}
+
+}
+</script>   
+</body>
+</html>
